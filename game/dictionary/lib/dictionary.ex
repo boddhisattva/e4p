@@ -4,21 +4,23 @@ defmodule Dictionary do
   """
 
   @doc """
-  Hello world.
+  Generate a random word from a text file(assets/words.txt) that serves as a dictionary
 
   ## Examples
 
-      iex> Dictionary.hello
-      :world
+      iex> Dictionary.random_word
+      "contributors"
 
   """
 
   def random_word do
-    Enum.random(word_list())
+    word_list()
+    |> Enum.random()
   end
 
   def word_list do
-    contents = File.read!("assets/words.txt")
-    words = String.split(contents, ~r/\n/)
+    "assets/words.txt"
+    |> File.read!()
+    |> String.split(~r/\n/)
   end
 end
