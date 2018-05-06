@@ -27,11 +27,7 @@ defmodule Hangman.Game do
     }
   end
 
-  def make_move(game = %{game_state: :won}, _guessed_letter) do
-    { game, tally(game) }
-  end
-
-  def make_move(game = %{game_state: :lost}, _guessed_letter) do
+  def make_move(game = %{game_state: state}, _guessed_letter) when state in [:won, :lost] do
     { game, tally(game) }
   end
 
