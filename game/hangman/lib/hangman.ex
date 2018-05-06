@@ -4,15 +4,13 @@ defmodule Hangman do
   """
 
   @doc """
-  Hello world.
-
+  Starting a new Hangman game
   ## Examples
-
-      iex> Hangman.hello
-      :world
-
+      iex> Hangman.new_game
+      Hello from the Hangman Game
   """
-  def hello do
-    IO.puts Dictionary.random_word
+
+  def new_game do
+    Hangman.Game.new_game()
   end
 end
