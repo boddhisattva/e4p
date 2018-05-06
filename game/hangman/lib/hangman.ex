@@ -10,7 +10,7 @@ defmodule Hangman do
       Hello from the Hangman Game
   """
 
-  def new_game do
-    Hangman.Game.new_game()
-  end
+  alias Hangman.Game
+
+  defdelegate new_game(), to: Game
 end
