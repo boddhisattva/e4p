@@ -3,14 +3,27 @@ defmodule Hangman.Game do
   Documentation for Hangman.
   """
 
+  defstruct(
+    turns__left: 7,
+    game_state: "initializing",
+    letters: []
+    )
+
   @doc """
   Starting a new Hangman game
   ## Examples
       iex> Hangman.new_game
-      Hello from the Hangman Game
+      %Hangman.Game{
+        game_state: "initializing",
+        letters: ["m", "o", "t", "i", "v", "a", "t", "e", "d"],
+        turns__left: 7
+      }
+}
   """
 
   def new_game do
-    IO.puts "Hello from the Hangman Game"
+    %Hangman.Game{
+      letters: Dictionary.random_word |> String.codepoints
+    }
   end
 end
