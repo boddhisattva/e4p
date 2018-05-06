@@ -4,7 +4,7 @@ defmodule Hangman.Game do
   """
 
   defstruct(
-    turns__left: 7,
+    turns_left: 7,
     game_state: "initializing",
     letters: []
     )
