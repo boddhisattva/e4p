@@ -33,7 +33,6 @@ defmodule Hangman.Game do
   end
 
   def make_move(game, guessed_letter) do
-    require IEx; IEx.pry
     game = accept_move(game, guessed_letter, MapSet.member?(game.used, guessed_letter))
     { game, tally(game) }
   end
@@ -69,8 +68,31 @@ iex(4)> Hangman.Game.accept_move(game, guessed_letter, false)
   """
   def accept_move(game, guessed_letter, _already_guessed) do
     Map.put(game, :used, MapSet.put(game.used, guessed_letter))
+    |> score_guess(Enum.member?(game.letters, guessed_letter))
   end
 
+
+  @doc """
+    We’ve won if the letters in the word form a true subset of the letters that are guessed
+  """
+
+  def score_guess(game, _good_guess = true) do
+    new_state = MapSet.new(game.letters)
+    |> MapSet.subset?(game.used)
+    |> maybe_won()
+
+    Map.put(game, :game_state, new_state)
+  end
+
+
+  def score_guess(game, _not_good_guess) do
+    # decrease turns left for a bad guess
+    # 0? ? :loss : :bad_guess
+    game
+  end
+
+  def maybe_won(true), do: :won
+  def maybe_won(_), do: :good_guess
 
   def tally(game) do
     123
