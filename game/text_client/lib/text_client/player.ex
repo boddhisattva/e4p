@@ -1,5 +1,5 @@
 defmodule TextClient.Player do
-  alias TextClient.State
+  alias TextClient.{Prompter, State, Summary}
 
   def play(%State{tally: %{ game_state: :won}}) do
     exit_with_message("You Won!")
@@ -38,8 +38,8 @@ defmodule TextClient.Player do
 
   def continue(game) do
     game
-    |> display()
-    |> prompt()
+    |> Summary.display()
+    |> Prompter.accept_move()
     |> make_move()
     |> play()
   end
