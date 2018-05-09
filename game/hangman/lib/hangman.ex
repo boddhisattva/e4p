@@ -12,6 +12,10 @@ defmodule Hangman do
       Hello from the Hangman Game
   """
   defdelegate new_game(),             to: Game
-  defdelegate make_move(game, guess), to: Game
   defdelegate tally(game),            to: Game
+
+  def make_move(game, guess) do
+    game = game.make_move(game, guess)
+    {game, tally(game)}
+  end
 end
