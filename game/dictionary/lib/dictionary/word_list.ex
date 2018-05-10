@@ -1,7 +1,10 @@
 defmodule Dictionary.WordList do
+  @moduledoc """
+  Documentation for WordList.
+  """
+
   def random_word(word_list) do
-    word_list
-    |> Enum.random()
+    Enum.random(word_list)
   end
 
   def word_list do
