@@ -1,7 +1,6 @@
 defmodule TextClient.Prompter do
   def accept_move(game) do
-    IO.gets("Your guess: ")
-    |> check_input(game)
+    check_input(IO.gets("Your guess: "), game)
   end
 
   defp check_input({:error, reason}, _) do

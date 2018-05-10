@@ -5,7 +5,7 @@ defmodule TextClient.Player do
     exit_with_message("You Won!")
   end
 
-  def play(%State{tally: %{ game_state: :lost}}) do
+  def play(%State{tally: %{game_state: :lost}}) do
     exit_with_message("Sorry, you lost")
   end
 
@@ -13,11 +13,11 @@ defmodule TextClient.Player do
     continue_with_message(game, "Good guess!")
   end
 
-  def play(game = %State{tally: %{ game_state: :bad_guess}}) do
+  def play(game = %State{tally: %{game_state: :bad_guess}}) do
     continue_with_message(game, "Sorry, that isn't in the word")
   end
 
-  def play(game = %State{tally: %{ game_state: :already_used}}) do
+  def play(game = %State{tally: %{game_state: :already_used}}) do
     continue_with_message(game, "You've already used that letter")
   end
 
