@@ -1,5 +1,8 @@
 defmodule TextClient.Interact do
-  alias TextClient.State
+  @moduledoc """
+  Interact is responsible for building the state and basically
+  kicking the game off.
+  """
 
   alias TextClient.{Player, State}
 
