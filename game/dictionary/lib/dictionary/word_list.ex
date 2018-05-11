@@ -2,9 +2,13 @@ defmodule Dictionary.WordList do
   @moduledoc """
   Documentation for WordList.
   """
+  def start_link() do
+    Agent.start_link(&word_list/0)
+  end
 
-  def random_word(word_list) do
-    Enum.random(word_list)
+  def random_word(agent_pid) do
+
+    Agent.get(agent_pid, &Enum.random/1)
   end
 
   def word_list do
