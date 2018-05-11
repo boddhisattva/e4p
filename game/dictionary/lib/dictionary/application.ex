@@ -1,6 +1,8 @@
 defmodule Dictionary.Application do
-  use Application # Elixir has a built in behavior for apps
-  # the above sets some defaults for us..
+  use Application
+  @moduledoc """
+  This module is used to help Dictionary be as a Free Standing Application
+  """
 
   def start(_type, _args) do
     Dictionary.WordList.start_link()
