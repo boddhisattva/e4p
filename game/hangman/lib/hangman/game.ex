@@ -48,11 +48,13 @@ defmodule Hangman.Game do
    }}
   """
   def make_move(game = %{game_state: state}, _guessed_letter) when state in [:won, :lost] do
-    game
+    return_with_tally(game)
+    { game, tally(game) }
   end
 
   def make_move(game, guessed_letter) do
     accept_move(game, guessed_letter, MapSet.member?(game.used, guessed_letter))
+    |> return_with_tally()
   end
 
   def tally(game) do
@@ -130,4 +132,6 @@ defmodule Hangman.Game do
 
   defp reveal_letter(letter, _in_word = true), do: letter
   defp reveal_letter(letter, _not_in_word), do: "_"
+
+  defp return_with_tally(game), do: { game, tally(game) }
 end
