@@ -10,7 +10,7 @@ defmodule Hangman do
       Hello from the Hangman Game
   """
   def new_game() do
-    Hangman.Server.start_link()
+    Supervisor.start_child(Hangman.Supervisor, [])
   end
 
   def tally(game_pid) do
