@@ -29,7 +29,6 @@ defmodule Hangman.Application do
     # It's just that they will be still supervised/managed..
     # Also since it's a one for one, If anyone crashes; it doesn't affect the other ones at all..
 
-
     # children are worker processes; we use a helper to specify it
 
     Supervisor.start_link(children, options)

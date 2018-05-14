@@ -49,7 +49,7 @@ defmodule Hangman.Game do
   """
   def make_move(game = %{game_state: state}, _guessed_letter) when state in [:won, :lost] do
     return_with_tally(game)
-    { game, tally(game) }
+    {game, tally(game)}
   end
 
   def make_move(game, guessed_letter) do
@@ -133,5 +133,5 @@ defmodule Hangman.Game do
   defp reveal_letter(letter, _in_word = true), do: letter
   defp reveal_letter(_letter, _not_in_word), do: "_"
 
-  defp return_with_tally(game), do: { game, tally(game) }
+  defp return_with_tally(game), do: {game, tally(game)}
 end
